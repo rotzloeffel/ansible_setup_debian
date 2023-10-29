@@ -1,0 +1,10 @@
+---
+ 
+- name: Check if starship already exists
+  stat:
+    path: /usr/local/bin/starship
+  register: file_starship
+
+- name: Download and install "starship"
+  ansible.builtin.shell: curl -sS https://starship.rs/install.sh | sh -s -- -f -y
+  when: not file_starship.stat.exists

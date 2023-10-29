@@ -1,7 +1,8 @@
 ---
 - name: Install audio server and applications
   ansible.builtin.apt:
-    name:
+    name: '{{ item }}'
+  loop:
       - pavucontrol
       - cava
       - pipewire
@@ -11,4 +12,3 @@
       - mpd
       - mpc
       - ncmpcpp
-    state: present

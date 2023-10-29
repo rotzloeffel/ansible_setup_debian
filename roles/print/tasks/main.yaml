@@ -1,8 +1,8 @@
 ---
 - name: Install print server and drivers
   ansible.builtin.apt:
-    pkg:
+    name: '{{ item }}'
+  loop:
       - cups
       - hplip
       - hplip-gui
-    state: present

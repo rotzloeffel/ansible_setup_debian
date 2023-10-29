@@ -7,17 +7,18 @@
     - libvirt-daemon-system
     - virt-manager
     - vagrant
+    - packer
     - pkg-config
-  notify: restart libvirt
+  notify: Restart libvirt
 
 - name: Add user to libvirt group
-  user:
+  ansible.builtin.user:
     name: '{{ var_current_user }}'
     groups: libvirt
     append: yes
 
 - name: Enable nested virtualization
-  copy:
+  ansible.builtin.copy:
     dest: /etc/modprobe.d/kvm.conf
     content: |
       options kvm_intel nested=1
@@ -30,7 +31,3 @@
     group: "{{ var_current_user }}"
     state: directory
     mode: '0770'
-
-- name: Configure isos directory in libvirt
-  become: false
-  shell: virsh pool-create-as --name isos --type dir --target {{ var_home_dir }}/isos || true

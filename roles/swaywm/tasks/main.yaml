@@ -1,61 +1,63 @@
 ---
 - name: Install sway window manager
   ansible.builtin.apt:
-    pkg:
-      - blueman
-      - clipman
-      - evolution
-      - firefox-esr
-      - firefox-esr-l10n-de
-      - gnome-keyring
-      - gtk2-engines-murrine
-      - grim
-      - gvfs
-      - gvfs-backends
-      - gvfs-common
-      - gvfs-daemons
-      - gvfs-fuse
-      - keepassxc
-      - imv
-      - kanshi
-      - lxappearance
-      - mpv
-      - mako-notifier
-      - nextcloud-desktop
-      - remmina
-      - nemo
-      - nemo-fileroller
-      - network-manager
-      - network-manager-gnome
-      - network-manager-config-connectivity-debian
-      - python3-i3ipc
-      - qalculate-gtk
-      - qutebrowser
-      - seahorse
-      - rofi
-      - slurp
-      - sway
-      - swayidle
-      - swaylock
-      - telegram-desktop
-      - udiskie
-      - waybar
-      - wdisplays
-      - wev
-      - wf-recorder
-      - wireguard
-      - wireguard-tools
-      - wl-clipboard
-      - wlsunset
-      - wtype
-      - xdg-user-dirs
-      - xdg-utils
-      - x11-xserver-utils
-      - xwayland
-    state: present
+    name: '{{ item }}'
+  loop:
+    - blueman
+    - clipman
+    - evolution
+    - firefox-esr
+    - firefox-esr-l10n-de
+    - gnome-keyring
+    - gtk2-engines-murrine
+    - grim
+    - gvfs
+    - gvfs-backends
+    - gvfs-common
+    - gvfs-daemons
+    - gvfs-fuse
+    - keepassxc
+    - imv
+    - kanshi
+    - lxappearance
+    - light
+    - qt6-wayland
+    - mpv
+    - mako-notifier
+    - nextcloud-desktop
+    - remmina
+    - nemo
+    - nemo-fileroller
+    - network-manager
+    - network-manager-gnome
+    - network-manager-config-connectivity-debian
+    - python3-i3ipc
+    - qalculate-gtk
+    - qutebrowser
+    - seahorse
+    - rofi
+    - slurp
+    - sway
+    - swayidle
+    - swaylock
+    - telegram-desktop
+    - udiskie
+    - waybar
+    - wdisplays
+    - wev
+    - wf-recorder
+    - wireguard
+    - wireguard-tools
+    - wl-clipboard
+    - wlsunset
+    - wtype
+    - xdg-user-dirs
+    - xdg-utils
+    - x11-xserver-utils
+    - xwayland
 
 - name: Add groups to current user
   ansible.builtin.user:
-    name: "{{var_current_user}}"
+    name: "{{ var_current_user }}"
     groups: bluetooth
     append: yes

@@ -12,9 +12,11 @@
 
   roles:
    - {role: common, become: true, tags: common}
+   - {role: laptop, become: true, tags: laptop}
    - {role: user, become: true, tags: user}
    - {role: ascii, become: true, tags: ascii}
    - {role: audio, become: true, tags: audio}
+   - {role: prompt, become: true, tags: prompt}
    - {role: editors, become: true, tags: editors}
    - {role: devops, become: true, tags: devops}
    - {role: office, become: true, tags: office}
