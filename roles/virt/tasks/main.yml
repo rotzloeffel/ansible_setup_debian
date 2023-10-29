@@ -1,7 +1,7 @@
 ---
 - name: Install virt packages
   ansible.builtin.apt:
-    name: '{{item}}'
+    name: '{{ item }}'
   loop:
       - qemu-system
       - libvirt-daemon-system

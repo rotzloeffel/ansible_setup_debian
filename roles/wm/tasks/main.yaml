@@ -10,6 +10,11 @@
       - gnome-keyring
       - gtk2-engines-murrine
       - grim
+      - gvfs
+      - gvfs-backends
+      - gvfs-common
+      - gvfs-daemons
+      - gvfs-fuse
       - keepassxc
       - imv
       - kanshi
