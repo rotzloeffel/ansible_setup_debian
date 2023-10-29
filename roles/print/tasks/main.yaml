@@ -1,0 +1,8 @@
+---
+- name: Install print server and drivers
+  ansible.builtin.apt:
+    pkg:
+      - cups
+      - hplip
+      - hplip-gui
+    state: present

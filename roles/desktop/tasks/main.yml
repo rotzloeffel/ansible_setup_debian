@@ -1,0 +1,36 @@
+---
+- name: Void | install desktop applications
+  community.general.xbps:
+    name:
+      - blueman
+      - chafa
+      - emacs-x11
+      - evolution
+      - ffmpeg
+      - ffmpegthumbnailer
+      - firefox-esr
+      - firefox-esr-i18n-de
+      - gnome-epub-thumbnailer
+      - gthumb
+      - gvfs
+      - gvfs-afc
+      - gvfs-afp
+      - gvfs-cdda
+      - gvfs-gphoto2
+      - gvfs-mtp
+      - gvfs-smb
+      - keepassxc
+      - libreoffice
+      - libreoffice-i18n-de
+      - mpv
+      - nemo
+      - nemo-fileroller
+      - nextcloud-client
+      - qalculate
+      - qalculate-gtk
+      - qutebrowser
+      - seahorse
+      - zathura
+      - zathura-pdf-mupdf
+      - zathura-ps
+    state: latest

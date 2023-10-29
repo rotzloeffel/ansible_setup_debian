@@ -1,0 +1,28 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: Install and setup new laptop
+  hosts: all
+
+  pre_tasks:
+   - name: Update apt package cache
+     become: true
+     ansible.builtin.apt:
+      cache_valid_time: 3600
+      update_cache: true
+
+  roles:
+   - {role: common, become: true, tags: common}
+   - {role: user, become: true, tags: user}
+   - {role: ascii, become: true, tags: ascii}
+   - {role: audio, become: true, tags: audio}
+   - {role: editors, become: true, tags: editors}
+   - {role: devops, become: true, tags: devops}
+   - {role: office, become: true, tags: office}
+   - {role: wm, become: true, tags: wm}
+   - {role: terminal, become: true, tags: terminal}
+   - {role: desktop, become: true, tags: desktop}
+   - {role: fonts, become: true, tags: fonts}
+   - {role: print, become: true, tags: print}
+   - {role: virt, become: true, tags: virt}
+   - {role: container, become: true, tags: container}
+   - {role: cleanup, become: true, tags: cleanup}

@@ -1,0 +1,35 @@
+---
+- name: Void | install container packages
+  community.general.xbps:
+    name: '{{item}}'
+  loop:
+      - docker
+      - docker-compose
+      - podman
+      - packer
+      - terraform
+      - podman-compose
+
+- name: copy subuid files for podman rootless
+  copy:
+    dest: /etc/subuid
+    content: "{{ user }}:100000:65536"
+
+- name: copy subgid files for podman rootless
+  copy:
+    dest: /etc/subgid
+    content: "{{ user }}:100000:65536"
+
+- name: configure podman registries
+  copy:
+    src: registries.conf
+    dest: /etc/containers/
+
+- name: Add user to docker group
+  user:
+    name: '{{ user }}'
+    groups: docker
+    append: yes
+  notify:
+    - enable dockerd
+    - disable dockerd at startup

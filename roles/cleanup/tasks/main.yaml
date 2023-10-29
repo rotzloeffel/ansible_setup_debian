@@ -1,0 +1,22 @@
+---
+- name: Upgrade apt package cache
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+    update_cache: true
+
+- name: Upgrade os (apt-get full-upgrade)
+  ansible.builtin.apt:
+    upgrade: full
+
+- name: Upgrade installed packages to their latest version
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+
+- name: Remove dependencies that are no longer required
+  ansible.builtin.apt:
+    autoremove: true
+
+- name: Remove useless packages from the package cache
+  ansible.builtin.apt:
+    autoclean: true

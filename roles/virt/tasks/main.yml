@@ -1,0 +1,33 @@
+---
+- name: Install virt packages
+  ansible.builtin.apt:
+    name: '{{item}}'
+  loop:
+      - qemu-system
+      - libvirt-daemon-system
+      - virt-manager
+      - dnsmasq
+      - vagrant
+      - pkg-config
+  notify: restart libvirt
+
+- name: Add user to libvirt group
+  user:
+    name: '{{var_current_user}}'
+    groups: libvirt
+    append: yes
+
+- name: Enable nested virtualization
+  copy:
+    dest: /etc/modprobe.d/kvm.conf
+    content: |
+      options kvm_intel nested=1
+
+- name: Create isos directory
+  become: false
+  file:
+    path: '{{var_home_dir}}/isos'
+    state: directory
+
+- name: Configure isos directory in libvirt
+  shell: virsh pool-create-as --name isos --type dir --target /var/lib/libvirt/isos || true

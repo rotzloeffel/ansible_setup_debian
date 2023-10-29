@@ -1,0 +1,4 @@
+---
+neovim:
+  # https://github.com/neovim/
+  version: "0.9.4"

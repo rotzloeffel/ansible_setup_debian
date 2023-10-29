@@ -1,0 +1,15 @@
+---
+- name: Install font "terminus"
+  ansible.builtin.apt:
+    pkg: terminus
+    state: present
+
+- name: Install font "fonts-emojione"
+  ansible.builtin.apt:
+    pkg: fonts-emojione
+    state: present
+
+- name: Install font "fonts-noto-color-emoji"
+  ansible.builtin.apt:
+    pkg: fonts-noto-color-emoji
+    state: present

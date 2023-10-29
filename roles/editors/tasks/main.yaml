@@ -1,0 +1,22 @@
+---
+
+- name: Check installed packages
+  package_facts:
+    manager: auto
+
+- name: Install vscode from url
+  ansible.builtin.apt:
+    deb: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+  when: "'code' not in ansible_facts.packages"
+
+- name: Check if nvim already exists
+  stat:
+    path: /usr/local/bin/nvim
+  register: file_nvim
+
+- name: Download and install "neovim"
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    dest: /usr/local/bin/nvim
+    mode: "777"
+  when: not file_nvim.stat.exists

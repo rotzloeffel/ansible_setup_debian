@@ -1,0 +1,11 @@
+---
+- name: Install ascii art packages
+  ansible.builtin.apt:
+    name:
+      - cmatrix
+      - figlet
+      - toilet
+      - toilet-fonts
+      - lolcat
+      - boxes
+    state: present

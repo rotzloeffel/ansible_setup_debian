@@ -1,0 +1,42 @@
+---
+- name: Add groups to current user
+  become: false
+  ansible.builtin.user:
+    name: "{{var_current_user}}"
+    groups: sudo,audio,video,lp,adm,systemd-journal,dip,cdrom,floppy,netdev,kvm,input,plugdev,users
+    append: yes
+
+- name: Create directories for current user
+  become: true
+  ansible.builtin.file:
+    path:  "{{item}}"
+    owner: "{{var_current_user}}"
+    group: "{{var_current_user}}"
+    state: directory
+    mode: '0770'
+  loop:
+    - "{{var_home_dir}}/backup"
+    - "{{var_home_dir}}/desktop"
+    - "{{var_home_dir}}/documents"
+    - "{{var_home_dir}}/downloads"
+    - "{{var_home_dir}}/music"
+    - "{{var_home_dir}}/nextcloud"
+    - "{{var_home_dir}}/pictures"
+    - "{{var_home_dir}}/pictures/screenshots"
+    - "{{var_home_dir}}/pictures/wallpaper"
+    - "{{var_home_dir}}/projects"
+    - "{{var_home_dir}}/repos"
+    - "{{var_home_dir}}/videos"
+    - "{{var_home_dir}}/videos/screencasts"
+
+- name: Create ".ssh" and ".gnupg" directory
+  become: true
+  ansible.builtin.file:
+    path:  "{{item}}"
+    owner: "{{var_current_user}}"
+    group: "{{var_current_user}}"
+    state: directory
+    mode: '0700'
+  loop:
+    - "{{var_home_dir}}/.ssh"
+    - "{{var_home_dir}}/.gnupg"

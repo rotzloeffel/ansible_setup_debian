@@ -1,0 +1,14 @@
+---
+- name: Install audio server and applications
+  ansible.builtin.apt:
+    name:
+      - pavucontrol
+      - cava
+      - pipewire
+      - pipewire-pulse
+      - playerctl
+      - wireplumber
+      - mpd
+      - mpc
+      - ncmpcpp
+    state: present

@@ -1,0 +1,11 @@
+---
+- name: Install libreoffice
+  ansible.builtin.apt:
+    pkg:
+      - libreoffice
+      - libreoffice-java-common
+      - default-jdk
+      - libreoffice-gtk3
+      - libreoffice-l10n-de
+      - libreoffice-help-de
+    state: present

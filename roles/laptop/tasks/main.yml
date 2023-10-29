@@ -1,0 +1,11 @@
+---
+- name: Detect if running on laptop
+  stat:
+    path: /sys/module/battery
+  register: laptop
+
+- name: Install package tlp
+  ansible.builtin.apt:
+    name: tlp
+  notify: restart tlp
+  when: laptop.stat.islnk is defined

@@ -1,0 +1,9 @@
+---
+- name: Check installed packages
+  package_facts:
+    manager: auto
+    
+- name: Install wezterm from url
+  ansible.builtin.apt:
+    deb: https://github.com/wez/wezterm/releases/download/nightly/wezterm-nightly.Debian12.deb
+  when: "'wezterm' not in ansible_facts.packages"
