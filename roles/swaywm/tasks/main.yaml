@@ -22,20 +22,22 @@
       - mpv
       - mako-notifier
       - nextcloud-desktop
+      - remmina
       - nemo
       - nemo-fileroller
       - network-manager
       - network-manager-gnome
       - network-manager-config-connectivity-debian
       - python3-i3ipc
-      - qt5-wayland
-      - qt6-wayland
+      - qalculate-gtk
+      - qutebrowser
+      - seahorse
       - rofi
       - slurp
-      - swappy
       - sway
       - swayidle
       - swaylock
+      - telegram-desktop
       - udiskie
       - waybar
       - wdisplays
@@ -48,12 +50,12 @@
       - wtype
       - xdg-user-dirs
       - xdg-utils
-      - xrdb
+      - x11-xserver-utils
       - xwayland
     state: present
 
 - name: Add groups to current user
   ansible.builtin.user:
     name: "{{var_current_user}}"
-    groups: _seatd,bluetooth
+    groups: bluetooth
     append: yes

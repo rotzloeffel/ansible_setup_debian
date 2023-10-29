@@ -1,35 +1,22 @@
 ---
-- name: Void | install container packages
-  community.general.xbps:
-    name: '{{item}}'
+- name: Install container packages
+  ansible.builtin.apt:
+    name: '{{ item }}'
   loop:
-      - docker
-      - docker-compose
-      - podman
-      - packer
-      - terraform
-      - podman-compose
+    - podman
+    - podman-compose
 
-- name: copy subuid files for podman rootless
-  copy:
+- name: Copy subuid files for podman rootless
+  ansible.builtin.copy:
     dest: /etc/subuid
-    content: "{{ user }}:100000:65536"
+    content: "{{ var_current_user }}:100000:65536"
 
-- name: copy subgid files for podman rootless
-  copy:
+- name: Copy subgid files for podman rootless
+  ansible.builtin.copy:
     dest: /etc/subgid
-    content: "{{ user }}:100000:65536"
+    content: "{{ var_current_user }}:100000:65536"
 
-- name: configure podman registries
-  copy:
+- name: Configure podman registries
+  ansible.builtin.copy:
     src: registries.conf
     dest: /etc/containers/
-
-- name: Add user to docker group
-  user:
-    name: '{{ user }}'
-    groups: docker
-    append: yes
-  notify:
-    - enable dockerd
-    - disable dockerd at startup

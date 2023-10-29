@@ -1,8 +1,8 @@
 ---
-- name: restart libvirt
+- name: Restart libvirt
   ansible.builtin.systemd:
     name: '{{ item }}'
-    enabled: yes
+    enabled: true
     state: restarted
   loop:
     - libvirtd

@@ -117,3 +117,12 @@
   ansible.builtin.apt_repository:
     repo: "deb [signed-by=/etc/apt/trusted.gpg.d/glow.gpg] https://repo.charm.sh/apt/ * *"
     state: present
+
+- name: Check installed packages
+  package_facts:
+    manager: auto
+
+- name: Install obsidian from github (note taking app)
+  ansible.builtin.apt:
+    deb: https://github.com/obsidianmd/obsidian-releases/releases/download/v{{ obsidian.version }}/obsidian_{{ obsidian.version }}_amd64.deb
+  when: "'obsidian' not in ansible_facts.packages"

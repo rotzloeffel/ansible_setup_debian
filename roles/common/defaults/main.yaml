@@ -1,3 +1,6 @@
 bat:
   # https://github.com/sharkdp/bat/releases
   version: "0.24.0"
+obsidian:
+  # https://github.com/obsidianmd/obsidian-releases/releases
+  version: "1.4.16"

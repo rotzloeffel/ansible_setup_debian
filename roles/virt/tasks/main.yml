@@ -3,17 +3,16 @@
   ansible.builtin.apt:
     name: '{{ item }}'
   loop:
-      - qemu-system
-      - libvirt-daemon-system
-      - virt-manager
-      - dnsmasq
-      - vagrant
-      - pkg-config
+    - qemu-system
+    - libvirt-daemon-system
+    - virt-manager
+    - vagrant
+    - pkg-config
   notify: restart libvirt
 
 - name: Add user to libvirt group
   user:
-    name: '{{var_current_user}}'
+    name: '{{ var_current_user }}'
     groups: libvirt
     append: yes
 
@@ -24,11 +23,14 @@
       options kvm_intel nested=1
 
 - name: Create isos directory
-  become: false
-  file:
-    path: '{{var_home_dir}}/isos'
+  become: true
+  ansible.builtin.file:
+    path:  "{{ var_home_dir }}/isos"
+    owner: "{{ var_current_user }}"
+    group: "{{ var_current_user }}"
     state: directory
+    mode: '0770'
 
 - name: Configure isos directory in libvirt
   become: false
-  shell: virsh pool-create-as --name isos --type dir --target {{var_home_dir}}/isos || true
+  shell: virsh pool-create-as --name isos --type dir --target {{ var_home_dir }}/isos || true
