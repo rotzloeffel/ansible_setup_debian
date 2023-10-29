@@ -30,4 +30,5 @@
     state: directory
 
 - name: Configure isos directory in libvirt
-  shell: virsh pool-create-as --name isos --type dir --target /var/lib/libvirt/isos || true
+  become: false
+  shell: virsh pool-create-as --name isos --type dir --target {{var_home_dir}}/isos || true
