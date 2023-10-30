@@ -1,5 +1,5 @@
 ---
-- name: Install print server and drivers
+- name: Install print server and hp-drivers
   ansible.builtin.apt:
     name: '{{ item }}'
   loop:
