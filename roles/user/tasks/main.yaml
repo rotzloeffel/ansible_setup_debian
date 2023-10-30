@@ -1,8 +1,9 @@
 ---
-- name: Add groups to current user
+- name: Change groups and shell for current user
   become: true
   ansible.builtin.user:
     name: "{{ var_current_user }}"
+    shell: /usr/bin/bash
     groups: sudo,audio,video,lp,adm,systemd-journal,dip,cdrom,floppy,netdev,kvm,input,plugdev,users
     append: yes
 
