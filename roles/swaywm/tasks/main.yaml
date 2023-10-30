@@ -1,5 +1,5 @@
 ---
-- name: Install sway window manager
+- name: Install "sway" window manager
   ansible.builtin.apt:
     name: '{{ item }}'
   loop:
