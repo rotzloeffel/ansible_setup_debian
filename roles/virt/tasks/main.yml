@@ -1,5 +1,5 @@
 ---
-- name: Install virt packages
+- name: Install virtual machine packages
   ansible.builtin.apt:
     name: '{{ item }}'
   loop:
