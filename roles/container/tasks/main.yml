@@ -1,5 +1,5 @@
 ---
-- name: Install container packages
+- name: Install "podman" packages
   ansible.builtin.apt:
     name: '{{ item }}'
   loop:
