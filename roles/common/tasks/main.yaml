@@ -44,7 +44,6 @@
     - mediainfo
     - mtr
     - ncdu
-    - neofetch
     - newsboat
     - netcat-openbsd
     - net-tools
@@ -99,7 +98,7 @@
     path: /usr/local/bin/broot
   register: file_broot
 
-- name: Download and install broot (better tree)
+- name: Download and install "broot" (better tree)
   ansible.builtin.get_url:
     url: https://dystroy.org/broot/download/x86_64-linux/broot
     dest: /usr/local/bin/broot
@@ -121,7 +120,7 @@
   package_facts:
     manager: auto
 
-- name: Install obsidian from github (note taking app)
+- name: Install "obsidian" from github (note taking app)
   ansible.builtin.apt:
     deb: https://github.com/obsidianmd/obsidian-releases/releases/download/v{{ obsidian.version }}/obsidian_{{ obsidian.version }}_amd64.deb
   when: "'obsidian' not in ansible_facts.packages"
