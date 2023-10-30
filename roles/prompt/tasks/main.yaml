@@ -1,5 +1,5 @@
 ---
-- name: Check if starship already exists
+- name: Check if "starship" already exists
   stat:
     path: /usr/local/bin/starship
   register: file_starship
