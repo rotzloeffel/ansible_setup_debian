@@ -94,7 +94,7 @@
     group: root
     state: link
 
-- name: Check if "broot" already exists
+- name: Check if "broot" already exists (better tree)
   stat:
     path: /usr/local/bin/broot
   register: file_broot
