@@ -36,6 +36,7 @@
     - inxi
     - jq
     - lf
+    - lsd
     - firmware-linux
     - lm-sensors
     - lshw
