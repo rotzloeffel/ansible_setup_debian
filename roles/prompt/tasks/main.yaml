@@ -1,5 +1,4 @@
 ---
- 
 - name: Check if starship already exists
   stat:
     path: /usr/local/bin/starship
