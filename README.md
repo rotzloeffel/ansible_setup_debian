@@ -1,3 +1,3 @@
-# Ansible playbook to setup a new laptop with debian 12
+# Setup a new workstation with debian 12 via ansible
 
 # work in progress ...
