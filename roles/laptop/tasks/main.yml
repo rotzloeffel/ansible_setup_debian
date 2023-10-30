@@ -4,7 +4,7 @@
     path: /sys/module/battery
   register: laptop
 
-- name: Install package tlp
+- name: Install package tlp (optimize linux laptop battery life)
   ansible.builtin.apt:
     name: tlp
   notify: restart tlp
