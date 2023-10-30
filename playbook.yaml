@@ -27,3 +27,4 @@
    - {role: virt, become: true, tags: virt}
    - {role: container, become: true, tags: container}
    - {role: cleanup, become: true, tags: cleanup}
+   - {role: dotfiles, become: true, tags: dotfiles}

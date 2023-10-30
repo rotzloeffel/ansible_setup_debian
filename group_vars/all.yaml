@@ -1,3 +1,45 @@
 ---
 var_home_dir: "{{ lookup('env', 'HOME') }}"
 var_current_user: "{{ lookup('env', 'USER') }}"
+
+dotfiles_git_repository: https://github.com/rotzloeffel/dotfiles_public.git
+
+stow:
+  - bash
+  - btop
+  - cava
+  - fontconfig
+  - fonts
+  - git
+  - gpg
+  - gtk
+  - icons
+  - imv
+  - kanshi
+  - lf
+  - mako
+  - mpd
+  - nano
+  - ncmpcpp
+  - neofetch
+  - newsboat
+  - nvim
+  - qt5ct
+  - qutebrowser
+  - ripgrep
+  - rofi
+  - scripts
+  - shell
+  - ssh
+  - starship
+  - stow
+  - sway
+  - swaylock
+  - themes
+  - tmux
+  - waybar
+  - wezterm
+  - wget
+  - x11
+  - xdg
+  - zathura

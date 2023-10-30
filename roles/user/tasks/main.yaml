@@ -1,6 +1,6 @@
 ---
 - name: Add groups to current user
-  become: false
+  become: true
   ansible.builtin.user:
     name: "{{ var_current_user }}"
     groups: sudo,audio,video,lp,adm,systemd-journal,dip,cdrom,floppy,netdev,kvm,input,plugdev,users
