@@ -11,6 +11,7 @@
       update_cache: true
 
   roles:
+   - {role: system, become: true, tags: system}
    - {role: common, become: true, tags: common}
    - {role: laptop, become: true, tags: laptop}
    - {role: user, become: true, tags: user}

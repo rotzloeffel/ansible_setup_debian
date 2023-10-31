@@ -2,7 +2,7 @@
 var_home_dir: "{{ lookup('env', 'HOME') }}"
 var_current_user: "{{ lookup('env', 'USER') }}"
 
-dotfiles_git_repository: https://github.com/rotzloeffel/dotfiles_public.git
+var_dotfiles_git_repository: https://github.com/rotzloeffel/dotfiles_public.git
 
 stow:
   - bash

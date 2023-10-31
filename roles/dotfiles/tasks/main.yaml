@@ -3,18 +3,8 @@
   become: true
   become_user: "{{ var_current_user }}"
   ansible.builtin.git:
-    repo: "{{ dotfiles_git_repository }}"
+    repo: "{{ var_dotfiles_git_repository }}"
     dest: "{{ var_home_dir }}/.dotfiles"
-
-- name: Change permission on "~/.dotfiles" directory
-  become: true
-  ansible.builtin.file:
-    path:  "{{ var_home_dir }}/.dotfiles"
-    owner: "{{ var_current_user }}"
-    group: "{{ var_current_user }}"
-    state: directory
-    recurse: yes 
-    mode: '0770'
 
 - name: Remove files from "$HOME"
   become: true
