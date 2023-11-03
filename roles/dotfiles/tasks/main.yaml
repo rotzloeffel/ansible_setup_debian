@@ -5,16 +5,22 @@
   ansible.builtin.git:
     repo: "{{ var_dotfiles_git_repository }}"
     dest: "{{ var_home_dir }}/.dotfiles"
+  vars:
+    ansible_remote_tmp: /tmp/ansible_remote_tmp
 
-- name: Remove files from "$HOME"
+- name: Remove bash dotfiles from "$HOME"
   become: true
+  become_user: "{{ var_current_user }}"
   ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   loop:
     - "{{ var_current_user }}/.profile"
+    - "{{ var_current_user }}/.bash_profile"
     - "{{ var_current_user }}/.bash_logout"
     - "{{ var_current_user }}/.bashrc"
+  vars:
+    ansible_remote_tmp: /tmp/ansible_remote_tmp
 
 - name: Stow dotfiles
   become: true
@@ -22,3 +28,5 @@
   ansible.builtin.shell:
     cmd: "stow -d {{ var_home_dir }}/.dotfiles -t {{ var_home_dir }} {{ item }}"
   loop: "{{ stow }}"
+  vars:
+    ansible_remote_tmp: /tmp/ansible_remote_tmp

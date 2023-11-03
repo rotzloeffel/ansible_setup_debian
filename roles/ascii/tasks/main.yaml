@@ -4,6 +4,7 @@
     name: '{{ item }}'
   loop:
     - cmatrix
+    - cowsay
     - figlet
     - toilet
     - toilet-fonts
