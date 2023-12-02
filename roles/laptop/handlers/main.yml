@@ -1,5 +1,5 @@
 ---
-- name: Restart tlp
+- name: restart tlp
   ansible.builtin.service:
     name: tlp
     state: restarted
