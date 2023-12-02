@@ -26,7 +26,7 @@
   become: true
   become_user: "{{ var_current_user }}"
   ansible.builtin.shell:
-    cmd: "stow -d {{ var_home_dir }}/.dotfiles -t {{ var_home_dir }} {{ item }}"
+    cmd: "stow -R -v -d {{ var_home_dir }}/.dotfiles -t {{ var_home_dir }} {{ item }}"
   loop: "{{ stow }}"
   vars:
     ansible_remote_tmp: /tmp/ansible_remote_tmp
